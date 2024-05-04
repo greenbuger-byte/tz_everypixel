@@ -49,7 +49,7 @@
 
 .bottom_panel__block_right{
     display: flex;
-    padding-right: 20px;
+    padding-right: 10px;
     align-items: center;
     color: #4A4A4A;
     justify-content: end;
