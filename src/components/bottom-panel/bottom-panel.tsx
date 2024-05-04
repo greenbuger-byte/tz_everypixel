@@ -1,5 +1,4 @@
 import React, { FC, useCallback, useEffect } from 'react';
-import cl from 'classnames';
 
 import styles from './bottom-panel.module.css';
 
@@ -33,7 +32,7 @@ const BottomPanel: FC<BottomPanelProps> = (props) => {
   }, [onRemoveAllSelectedImages]);
 
   return (
-    <div className={cl('mdl-shadow--2dp', styles.bottom_panel_wrapper)}>
+    <div className={`mdl-shadow--2dp' ${styles.bottom_panel_wrapper}`}>
       <div className={styles.bottom_panel_content}>
         <div className={styles.bottom_panel__block_left}>
           <div
