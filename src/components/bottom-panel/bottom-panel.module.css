@@ -27,7 +27,7 @@
 
 .bottom_panel__block_left{
     display: flex;
-    padding-left: 20px;
+    padding-left: 10px;
     justify-content: start;
     flex-basis: 320px;
     align-items: center;
