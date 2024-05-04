@@ -1,0 +1,29 @@
+.checkbox{
+    appearance: none;
+    display: none;
+}
+
+.checkbox__label{
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
+    border: 3px solid #FFFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: 300ms;
+}
+.checkbox__label:hover{
+    transform: scale(110%);
+}
+
+.checkbox__label__checked{
+    background-color: #8BC24B;
+    border: #8BC24B;
+    width: 18px;
+    height: 18px;
+    color: #FFFFFF;
+    font-size: 12px;
+    padding: 3px;
+}
