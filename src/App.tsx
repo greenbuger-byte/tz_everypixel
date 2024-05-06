@@ -61,24 +61,28 @@ function App() {
       <div className="page-content">
         <h6 className="mdl-typography--caption title">{imageData.length} ИЗОБРАЖЕНИЙ</h6>
         <div className="mdl-grid mdl-grid--no-spacing">
-          {imageData
-            .slice(currentPage * ITEMS_PER_PAGE - ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE)
-            .map((card) => (
-              <div
-                key={card.id}
-                className="mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet"
-                style={{
-                  padding: '14px',
-                }}
-              >
-                <Card
-                  checked={Boolean(checkedList[card.id])}
-                  onRemoveCard={removeImageHandler}
-                  onCheckCard={imageCheckFillHandler}
-                  card={card}
-                />
-              </div>
-            ))}
+          {imageData.length ? (
+            imageData
+              .slice(currentPage * ITEMS_PER_PAGE - ITEMS_PER_PAGE, currentPage * ITEMS_PER_PAGE)
+              .map((card) => (
+                <div
+                  key={card.id}
+                  className="mdl-cell mdl-cell--4-col mdl-cell--12-col-tablet"
+                  style={{
+                    padding: '14px',
+                  }}
+                >
+                  <Card
+                    checked={Boolean(checkedList[card.id])}
+                    onRemoveCard={removeImageHandler}
+                    onCheckCard={imageCheckFillHandler}
+                    card={card}
+                  />
+                </div>
+              ))
+          ) : (
+            <div>Нет изображений</div>
+          )}
           <SimplePagination
             page={currentPage}
             onChangePage={changeCurrentPage}

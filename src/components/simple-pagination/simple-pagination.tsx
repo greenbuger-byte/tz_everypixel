@@ -30,7 +30,7 @@ const SimplePagination: FC<SimplePaginationProps> = (props) => {
   }
   return (
     <>
-      {pages && pages !== 1 && (
+      {pages && pages !== 1 ? (
         <div className={styles.pagination}>
           <div className={styles.pagination__wrapper}>
             <button
@@ -56,6 +56,8 @@ const SimplePagination: FC<SimplePaginationProps> = (props) => {
             </button>
           </div>
         </div>
+      ) : (
+        <></>
       )}
     </>
   );
