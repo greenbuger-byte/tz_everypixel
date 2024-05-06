@@ -47,17 +47,6 @@ function App() {
     let removeTarget: CheckedImages = {};
     if (typeof id === 'number') {
       removeTarget = { [id]: 0 };
-      updateCheckedList((prevState) => {
-        delete prevState?.[id];
-        return Object.entries(prevState).reduce<CheckedImages>((totalList, [index, cost]) => {
-          if (id <= Number(index)) {
-            totalList[Number(index) - 1] = cost;
-          } else {
-            totalList[String(index)] = cost;
-          }
-          return totalList;
-        }, {});
-      });
     } else {
       removeTarget = { ...checkedList };
       updateCheckedList({});
