@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { BottomPanel, Card, SimplePagination } from '@/components';
 import cardsList from '@/mock/data.json';
@@ -8,12 +8,14 @@ import { CheckedImages, CheckedImageState, DemoCardWithId, RemoveOptions } from 
 export const DEFAULT_PRICE = 500;
 
 function App() {
-  const [imageData, changeImageData] = useState<Array<DemoCardWithId>>(() =>
-    cardsList.map((card, id) => ({ ...card, id })),
-  );
+  const [imageData, changeImageData] = useState<Array<DemoCardWithId>>([]);
   const [checkedList, updateCheckedList] = useState<CheckedImages>({});
   const [currentPage, changeCurrentPage] = useState<number>(1);
   const ITEMS_PER_PAGE = 6;
+
+  useEffect(() => {
+    changeImageData(cardsList.map((card, id) => ({ ...card, id })));
+  }, []);
 
   function imageCheckFillHandler(checkedState: CheckedImageState) {
     const { options, cardCheck } = checkedState;
@@ -47,11 +49,11 @@ function App() {
       removeTarget = { [id]: 0 };
       updateCheckedList((prevState) => {
         delete prevState?.[id];
-        return Object.entries(prevState).reduce<CheckedImages>((totalList, [index, coast]) => {
+        return Object.entries(prevState).reduce<CheckedImages>((totalList, [index, cost]) => {
           if (id <= Number(index)) {
-            totalList[Number(index) - 1] = coast;
+            totalList[Number(index) - 1] = cost;
           } else {
-            totalList[String(index)] = coast;
+            totalList[String(index)] = cost;
           }
           return totalList;
         }, {});
@@ -61,7 +63,7 @@ function App() {
       updateCheckedList({});
     }
     changeImageData((prevState) => {
-      return prevState.filter((_, index) => removeTarget?.[String(index)] === undefined);
+      return prevState.filter((demoCard) => removeTarget?.[demoCard.id] === undefined);
     });
   }
 
