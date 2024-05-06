@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { BottomPanel, Card, SimplePagination } from '@/components';
 import cardsList from '@/mock/data.json';
@@ -12,6 +12,16 @@ function App() {
   const [checkedList, updateCheckedList] = useState<CheckedImages>({});
   const [currentPage, changeCurrentPage] = useState<number>(1);
   const ITEMS_PER_PAGE = 6;
+
+  const checkPageCount = useCallback(() => {
+    currentPage > 1 &&
+      currentPage > Math.ceil(imageData.length / ITEMS_PER_PAGE) &&
+      changeCurrentPage(1);
+  }, [currentPage, imageData.length]);
+
+  useEffect(() => {
+    checkPageCount();
+  }, [checkPageCount]);
 
   useEffect(() => {
     changeImageData(cardsList.map((card, id) => ({ ...card, id })));
