@@ -1,4 +1,5 @@
 <div style="display: flex; justify-content: center; padding: 20px">
+<a href="https://tz-everypixel-7lnq8fow8-greenbugerbytes-projects.vercel.app/" alt="ссылка на проект"> Посмотреть результат </a>
 <img src="./logo-company.png" width="200"  alt="пример реализации"/>
 </div>
 <h3>ТЕСТОВОЕ ЗАДАНИЕ </h3>
